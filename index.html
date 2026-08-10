@@ -18,20 +18,32 @@
             --text-dim: #a0a0a0;
         }
 
-        body {
+        /* Убираем любые стандартные отступы, чтобы растянуть на весь экран */
+        html, body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
             background-color: var(--bg-color);
             color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             min-height: 100vh;
+            width: 100%;
         }
 
         header {
             text-align: center;
             padding: 60px 20px 40px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .version-badge {
@@ -83,11 +95,11 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             width: 90%;
-            margin: 40px 0;
+            margin: 20px auto;
         }
 
         .card {
@@ -116,11 +128,14 @@
         }
 
         footer {
-            margin-top: auto;
+            width: 100%;
             padding: 25px;
             color: var(--text-dim);
             font-size: 0.9rem;
             text-align: center;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
         }
 
         footer a {
@@ -135,32 +150,34 @@
 </head>
 <body>
 
-    <header>
-        <div class="version-badge">Version 4.0 Release</div>
-        <h1>SayLow Optimizer</h1>
-        <p class="subtitle">Максимальный буст FPS, снижение задержки ввода (Input Lag) и глубокая очистка Windows в один клик.</p>
-        <!-- Прямая ссылка на скачивание инсталлера с GitHub -->
-        <a href="https://github.com/fl0wtiwes/Free-Windows-Optimization-FPS-Booster-Tool/releases/download/v2.0.0/SayLowOptimizer_v4.0_Installer.exe" class="btn-download">🚀 Скачать Установщик (v4.0)</a>
-    </header>
+    <div class="wrapper">
+        <header>
+            <div class="version-badge">Version 4.0 Release</div>
+            <h1>SayLow Optimizer</h1>
+            <p class="subtitle">Максимальный буст FPS, снижение задержки ввода (Input Lag) и глубокая очистка Windows в один клик.</p>
+            <!-- Прямая ссылка на скачивание инсталлера с GitHub -->
+            <a href="https://github.com/fl0wtiwes/Free-Windows-Optimization-FPS-Booster-Tool/releases/download/v2.0.0/SayLowOptimizer_v4.0_Installer.exe" class="btn-download">🚀 Скачать Установщик (v4.0)</a>
+        </header>
 
-    <section class="features">
-        <div class="card">
-            <h3>⚡ Низкий Input Lag</h3>
-            <p>Оптимизация параметров задержки ввода и активация режима низкой задержки для максимального отклика в играх.</p>
-        </div>
-        <div class="card">
-            <h3>🎮 Прирост FPS</h3>
-            <p>Отключение ненужных фоновых служб Windows, телеметрии и тонкая настройка производительности.</p>
-        </div>
-        <div class="card">
-            <h3>🛡️ Безопасность</h3>
-            <p>Создание точек восстановления системы и полностью прозрачный код твиков для вашей уверенности.</p>
-        </div>
-    </section>
+        <section class="features">
+            <div class="card">
+                <h3>⚡ Низкий Input Lag</h3>
+                <p>Оптимизация параметров задержки ввода и активация режима низкой задержки для максимального отклика в играх.</p>
+            </div>
+            <div class="card">
+                <h3>🎮 Прирост FPS</h3>
+                <p>Отключение ненужных фоновых служб Windows, телеметрии и тонкая настройка производительности.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Безопасность</h3>
+                <p>Создание точек восстановления системы и полностью прозрачный код твиков для вашей уверенности.</p>
+            </div>
+        </section>
 
-    <footer>
-        &copy; 2026 SayLow Optimizer. Создано разработчиком <a href="https://t.me/SayLowRr" target="_blank">SayLow</a>. Распространяется бесплатно.
-    </footer>
+        <footer>
+            &copy; 2026 SayLow Optimizer. Создано разработчиком <a href="https://t.me/SayLowRr" target="_blank">SayLow</a>. Распространяется бесплатно.
+        </footer>
+    </div>
 
 </body>
 </html>
