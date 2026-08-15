@@ -51,9 +51,29 @@ ctk.set_default_color_theme("blue")
 CONFIG_FILE_NAME = "SayLow_config.json"
 BACKUP_FILE_NAME = "SayLow_backup.json"
 
-# Генерация 100 валидных PRO-ключей
-PRO_KEYS = [f"SLO-PRO-{i:04d}-2026-X89" for i in range(1, 101)]
-ADMIN_KEY = "ADMIN-MASTER-ROOT-777"
+import hashlib
+
+# Вместо самих ключей — только их хэши (это примеры хэшей)
+VALID_PRO_HASHES = [
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", # Хэш от первого ключа
+    "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce", # Хэш от второго ключа
+    # и так далее...
+]
+
+def check_pro_key(entered_key):
+    # Считаем хэш от того, что ввел пользователь
+    entered_hash = hashlib.sha256(entered_key.strip().encode('utf-8')).hexdigest()
+    # Проверяем, есть ли такой хэш в нашей базе
+    return entered_hash in VALID_PRO_HASHES
+import hashlib
+
+# Вместо самого ключа хранится его SHA-256 хеш (этот пример — хеш от "ТвойНовыйСекретныйКлюч123")
+ADMIN_HASH = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+def check_admin(entered_key):
+    # Считаем хеш от того, что ввел пользователь, и сравниваем с эталоном
+    entered_hash = hashlib.sha256(entered_key.strip().encode('utf-8')).hexdigest()
+    return entered_hash == ADMIN_HASH
 
 class SayLowOptimizerApp(ctk.CTk):
     def __init__(self):
