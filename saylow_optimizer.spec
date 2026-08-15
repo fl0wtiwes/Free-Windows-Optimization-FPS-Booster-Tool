@@ -1,25 +1,39 @@
-@echo off
-setlocal EnableExtensions
-title SayLow Optimizer Launcher
+# -*- mode: python ; coding: utf-8 -*-
 
-cd /d "%~dp0"
 
-:: Checking PowerShell script
-set "GUI=%~dp0SayLow_GUI_v4.ps1"
-
-if not exist "%GUI%" (
-    echo [ERROR] File not found: SayLow_GUI_v4.ps1
-    echo Please place SayLow_GUI_v4.ps1 near this BAT file.
-    pause
-    exit /b 1
+a = Analysis(
+    ['saylow_optimizer.py'],
+    pathex=[],
+    binaries=[],
+    datas=[('icon.ico', '.'), ('icon.ico', '.')],
+    hiddenimports=[],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    noarchive=False,
+    optimize=0,
 )
+pyz = PYZ(a.pure)
 
-:: Elevate to Administrator if needed and run PS1
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Start-Process powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""%GUI%""' -Verb RunAs"
-    exit /b 0
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.datas,
+    [],
+    name='saylow_optimizer',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=False,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=['icon.ico'],
 )
-
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%GUI%"
-exit /b 0
